@@ -5,11 +5,17 @@ import org.sikuli.script.ImagePath;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
+import br.com.matheus.sikulix.automations.pages.TaskBarPage;
+
 public class GmailAutomation {
 
 	public static void main(String[] args) throws FindFailed {
 		GmailAutomation.setImagePath();
 		GmailAutomation.minimize();
+		
+		TaskBarPage taskBarPage = new TaskBarPage();
+		taskBarPage.showTaskBar();
+		taskBarPage.openAnonymousOpera();
 	}
 	
 	private static void setImagePath() {
