@@ -38,4 +38,8 @@ public abstract class AbstractPage {
 	public void biggerWait() {
 		screen.wait(biggerWaitTime);
 	}
+	
+	protected void paste(String pasteable) {
+		screen.paste(pasteable);
+	}
 }
