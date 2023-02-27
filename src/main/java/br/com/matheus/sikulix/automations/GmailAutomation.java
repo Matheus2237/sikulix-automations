@@ -5,6 +5,7 @@ import org.sikuli.script.ImagePath;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
+import br.com.matheus.sikulix.automations.pages.AnonymousOperaPage;
 import br.com.matheus.sikulix.automations.pages.TaskBarPage;
 
 public class GmailAutomation {
@@ -16,6 +17,9 @@ public class GmailAutomation {
 		TaskBarPage taskBarPage = new TaskBarPage();
 		taskBarPage.showTaskBar();
 		taskBarPage.openAnonymousOpera();
+		
+		AnonymousOperaPage operaPage = new AnonymousOperaPage();
+		operaPage.search("gmail.com");
 	}
 	
 	private static void setImagePath() {
