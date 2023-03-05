@@ -11,29 +11,22 @@ public class AnonymousOperaPage extends AbstractPage {
 	private Pattern searchBar = new Pattern("opera\\search-bar.png");
 	private Pattern closeX = new Pattern("opera\\closeX.png");
 	
-	public AnonymousOperaPage() {}
-	
-	public void search(String searchInput) {
-		super.biggerWait();
-		if(this.isOperaOnStart()) {
-			super.click(searchBar);
-			super.paste(searchInput);
-			super.type(Key.ENTER);
+	public AnonymousOperaPage() {
+		while(!isOperaOnStart()) {
+			super.stdWait();
 		}
 	}
-	
-	private boolean isOperaOnStart() { return isFirstStart() || isSecondStart(); }
-	
-	private boolean isFirstStart() { return isAnonymousIcon() && isInPrivateMode(); }
-	
-	private boolean isSecondStart() { return isAnonymousIcon() && isSearchInWeb(); }
-	
-	private boolean isAnonymousIcon() { return super.exists(anonymousIcon); }
-	
-	private boolean isInPrivateMode() {	return super.exists(inPrivateMode);	}
-	
-	private boolean isSearchInWeb() { return super.exists(searchInWeb);	}
 
+	public void search(String searchInput) {
+		super.click(searchBar);
+		super.paste(searchInput);
+		super.type(Key.ENTER);
+	}
+	
+	private boolean isOperaOnStart() {
+		return super.exists(anonymousIcon) || super.exists(inPrivateMode) || super.exists(searchInWeb);
+	}
+	
 	public void closeTab() {
 		super.biggerWait();
 		super.click(closeX);

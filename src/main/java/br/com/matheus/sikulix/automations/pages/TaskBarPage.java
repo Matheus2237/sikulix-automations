@@ -16,11 +16,11 @@ public class TaskBarPage extends AbstractPage{
 	}
 	
 	public void openAnonymousOpera() {
-		if(isTaskBarVisible()) {
-			super.rightClick(this.operaIcon);
+		while (!isTaskBarVisible()) {
+			super.stdWait();
 		}
+		super.rightClick(this.operaIcon);
 		super.click(this.newAnonymousGuide);
-		super.biggerWait();
 	}
 
 	private boolean isTaskBarVisible() { return super.exists(this.taskbar); }
