@@ -10,9 +10,10 @@ public abstract class AbstractPage {
 	private static final double stdWaitTime = 0.8;
 	private static final double biggerWaitTime = 5.0;
 	
-	protected void type(String pressedKey) {
+	protected AbstractPage type(String pressedKey) {
 		screen.wait(stdWaitTime);
 		screen.type(pressedKey);
+		return this;
 	}
 	
 	protected boolean exists(Pattern pattern) {
@@ -35,11 +36,12 @@ public abstract class AbstractPage {
 		screen.wait(stdWaitTime);
 	}
 	
-	public void biggerWait() {
+	protected void biggerWait() {
 		screen.wait(biggerWaitTime);
 	}
 	
-	protected void paste(String pasteable) {
+	protected AbstractPage paste(String pasteable) {
 		screen.paste(pasteable);
+		return this;
 	}
 }

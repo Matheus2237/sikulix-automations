@@ -33,11 +33,9 @@ public class GmailPage extends AbstractPage {
 	private void writeEmail(String to, String subject, String body) {
 		super.stdWait();
 		super.click(gmailTextArea);
-		super.paste(to);
-		super.type(Key.TAB);
-		super.paste(subject);
-		super.type(Key.TAB);
-		super.paste(body);
+		super.paste(to).type(Key.TAB)
+				.paste(subject).type(Key.TAB)
+				.paste(body);
 	}
 	
 	public void send() {
