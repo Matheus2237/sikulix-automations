@@ -11,16 +11,18 @@ public class GmailLoginPage extends AbstractPage {
 	private Pattern showPassword = new Pattern("gmail\\login-show-password.png");
 	private Pattern twoStepsVerfication = new Pattern("gmail\\login-two-steps-verification.png");
 	
-	public GmailLoginPage() {}
+	public GmailLoginPage() {
+		while(!isLoginAtStart()) {
+			super.stdWait();
+		}
+	}
 	
 	public void login(String user, String password) {
-		super.biggerWait();
-		if (isLoginAtStart()) {
-			this.fillField(emailOrTelephone, user);
+		this.fillField(emailOrTelephone, user);
+		while(!isLoginAtPassword()) {
+			super.stdWait();
 		}
-		if (isLoginAtPassword()) {
-			this.fillField(typeYourPassword, password);
-		}
+		this.fillField(typeYourPassword, password);
 	}
 	
 	private void fillField(Pattern field, String information) {
@@ -36,17 +38,13 @@ public class GmailLoginPage extends AbstractPage {
 		}
 	}
 	
-	private boolean isLoginAtStart() { return isStartPoint() && isEmailOrTelephone() && isNextButton(); }
+	private boolean isLoginAtStart() {
+		return super.exists(startPoint) && super.exists(emailOrTelephone) && hasNextButton();
+	}
 	
-	private boolean isLoginAtPassword() { return isTypeYourPassword() && isShowPassword() && isNextButton(); }
+	private boolean isLoginAtPassword() {
+		return super.exists(typeYourPassword) && super.exists(showPassword) && hasNextButton();
+	}
 	
-	private boolean isStartPoint() { return super.exists(startPoint); }
-	
-	private boolean isEmailOrTelephone() { return super.exists(emailOrTelephone); }
-	
-	private boolean isNextButton() { return super.exists(nextButton); }
-	
-	private boolean isTypeYourPassword() { return super.exists(typeYourPassword); }
-	
-	private boolean isShowPassword() { return super.exists(showPassword); }
+	private boolean hasNextButton() { return super.exists(nextButton); }
 }
