@@ -34,6 +34,7 @@ public class GmailAutomation {
 		String subject = "Automação Sikuli";
 		String body = "Email enviado utilizando a API do SikuliX :)";
 		gmailPage.enviarEmail(USER_GMAIL, subject, body).send();
+		operaPage.closeTab();
 	}
 	
 	private static void setImagePath() {
