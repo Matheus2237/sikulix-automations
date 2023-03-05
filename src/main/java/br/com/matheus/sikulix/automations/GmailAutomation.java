@@ -7,6 +7,7 @@ import org.sikuli.script.Screen;
 
 import br.com.matheus.sikulix.automations.pages.AnonymousOperaPage;
 import br.com.matheus.sikulix.automations.pages.GmailLoginPage;
+import br.com.matheus.sikulix.automations.pages.GmailPage;
 import br.com.matheus.sikulix.automations.pages.TaskBarPage;
 
 public class GmailAutomation {
@@ -28,6 +29,11 @@ public class GmailAutomation {
 		GmailLoginPage gmailLoginPage = new GmailLoginPage();
 		gmailLoginPage.login(USER_GMAIL, PASSWORD_GMAIL);
 		gmailLoginPage.waitForVerification();
+		
+		GmailPage gmailPage = new GmailPage();
+		String subject = "Automação Sikuli";
+		String body = "Email enviado utilizando a API do SikuliX :)";
+		gmailPage.enviarEmail(USER_GMAIL, subject, body).send();
 	}
 	
 	private static void setImagePath() {
