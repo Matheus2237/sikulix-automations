@@ -27,9 +27,7 @@ public class GmailLoginPage extends AbstractPage {
 	
 	private void fillField(Pattern field, String information) {
 		super.click(field);
-		super.paste(information);
-		super.click(nextButton);
-		super.stdWait();
+		super.paste(information).click(nextButton);
 	}
 	
 	public void waitForVerification() {

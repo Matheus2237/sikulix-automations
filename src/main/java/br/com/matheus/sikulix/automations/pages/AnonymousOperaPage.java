@@ -19,8 +19,7 @@ public class AnonymousOperaPage extends AbstractPage {
 
 	public void search(String searchInput) {
 		super.click(searchBar);
-		super.paste(searchInput);
-		super.type(Key.ENTER);
+		super.paste(searchInput).type(Key.ENTER);
 	}
 	
 	private boolean isOperaOnStart() {
