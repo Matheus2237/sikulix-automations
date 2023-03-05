@@ -8,7 +8,7 @@ public abstract class AbstractPage {
 
 	private Screen screen = new Screen();
 	private static final double stdWaitTime = 0.8;
-	private static final double biggerWaitTime = 4.0;
+	private static final double biggerWaitTime = 5.0;
 	
 	protected void type(String pressedKey) {
 		screen.wait(stdWaitTime);
