@@ -10,8 +10,14 @@ public class GmailPage extends AbstractPage {
 	private Pattern gmailTextArea = new Pattern("gmail\\gmail-text-area.png");
 	private Pattern gmailSend = new Pattern("gmail\\gmail-send.png");
 	
+	public GmailPage() {
+		while(!isGmailPage()) {
+			super.stdWait();
+		}
+	}
+	
 	public GmailPage enviarEmail(String to, String subject, String body) {
-		super.biggerWait();
+		super.stdWait();
 		if(isGmailPage()) {
 			super.click(gmailCompose);
 			this.writeEmail(to, subject, body);
