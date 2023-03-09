@@ -5,12 +5,17 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
 import br.com.matheus.sikulix.automations.pages.AbstractPage;
+import br.com.matheus.sikulix.automations.pages.TaskBarPage;
 
 public class YoutubeAutomation {
 
 	public static void main(String[] args) throws FindFailed {
 		AbstractPage.setImagePath();
 		YoutubeAutomation.minimize();
+		
+		TaskBarPage taskBarPage = new TaskBarPage();
+		taskBarPage.showTaskBar();
+		taskBarPage.openAnonymousOpera();
 	}
 	
 	private static void minimize() throws FindFailed {	
