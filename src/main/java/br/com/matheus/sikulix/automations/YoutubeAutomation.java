@@ -7,6 +7,7 @@ import org.sikuli.script.Screen;
 import br.com.matheus.sikulix.automations.pages.AbstractPage;
 import br.com.matheus.sikulix.automations.pages.AnonymousOperaPage;
 import br.com.matheus.sikulix.automations.pages.TaskBarPage;
+import br.com.matheus.sikulix.automations.pages.YoutubePage;
 
 public class YoutubeAutomation {
 
@@ -20,6 +21,9 @@ public class YoutubeAutomation {
 		
 		AnonymousOperaPage operaPage = new AnonymousOperaPage();
 		operaPage.search("youtube.com");
+		
+		YoutubePage youtubePage = new YoutubePage();
+		youtubePage.searchVideo("TesseracT - Juno");
 	}
 	
 	private static void minimize() throws FindFailed {	
