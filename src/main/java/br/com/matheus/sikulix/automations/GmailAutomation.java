@@ -5,6 +5,7 @@ import org.sikuli.script.ImagePath;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
+import br.com.matheus.sikulix.automations.pages.AbstractPage;
 import br.com.matheus.sikulix.automations.pages.AnonymousOperaPage;
 import br.com.matheus.sikulix.automations.pages.GmailLoginPage;
 import br.com.matheus.sikulix.automations.pages.GmailPage;
@@ -16,7 +17,7 @@ public class GmailAutomation {
 	final static String PASSWORD_GMAIL = System.getenv("PASSWORD_GMAIL");
 	
 	public static void main(String[] args) throws FindFailed {
-		GmailAutomation.setImagePath();
+		AbstractPage.setImagePath();
 		GmailAutomation.minimize();
 		
 		TaskBarPage taskBarPage = new TaskBarPage();
@@ -35,12 +36,6 @@ public class GmailAutomation {
 		String body = "Email enviado utilizando a API do SikuliX :)";
 		gmailPage.enviarEmail(USER_GMAIL, subject, body).send();
 		operaPage.closeTab();
-	}
-	
-	private static void setImagePath() {
-		final String LOCAL_PROJECT_PATH = System.getenv("LOCAL_PROJECT_PATH");
-		final String IMAGES_ROOT_PATH = "sikulix-automations\\src\\main\\resources\\sikuli-imgs\\";
-		ImagePath.add(LOCAL_PROJECT_PATH.concat(IMAGES_ROOT_PATH));
 	}
 	
 	private static void minimize() throws FindFailed {	
