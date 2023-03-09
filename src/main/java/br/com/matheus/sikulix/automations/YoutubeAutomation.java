@@ -5,6 +5,7 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
 import br.com.matheus.sikulix.automations.pages.AbstractPage;
+import br.com.matheus.sikulix.automations.pages.AnonymousOperaPage;
 import br.com.matheus.sikulix.automations.pages.TaskBarPage;
 
 public class YoutubeAutomation {
@@ -16,6 +17,9 @@ public class YoutubeAutomation {
 		TaskBarPage taskBarPage = new TaskBarPage();
 		taskBarPage.showTaskBar();
 		taskBarPage.openAnonymousOpera();
+		
+		AnonymousOperaPage operaPage = new AnonymousOperaPage();
+		operaPage.search("youtube.com");
 	}
 	
 	private static void minimize() throws FindFailed {	
