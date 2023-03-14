@@ -8,3 +8,8 @@ Rotinas automatizadas utilizando a API do SikuliX.
 
 ## Automação Gmail
 - Ao realizar a autenticação, o sikuli espera o usuário concluir a segunda etapa da verificação através do celular.
+
+
+## Automação Youtube
+- Rotina de abertura do Youtube e da busca pela música Juno, da banda TesseracT, além da melhora de qualidade de imagem do vídeo para 1080p.
+- Antes de realizar a ação de configurar o vídeo para 1080p, a automação espera todos os anúncios terminarem.
