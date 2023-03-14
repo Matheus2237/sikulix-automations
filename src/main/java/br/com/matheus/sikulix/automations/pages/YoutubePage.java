@@ -1,25 +1,26 @@
 package br.com.matheus.sikulix.automations.pages;
 
+import org.sikuli.script.Key;
 import org.sikuli.script.Pattern;
 
 public class YoutubePage extends AbstractPage {
 
 	private Pattern logo = new Pattern("youtube\\youtube-logo.png");
 	private Pattern searchBar = new Pattern("youtube\\youtube-search-bar.png");
-	private Pattern searchButton= new Pattern("youtube\\youtube-search-button.png");
 
 	public YoutubePage() {
-		while(!isYoutubeAtStart()) {
+		while(!isYoutubeLoaded()) {
 			super.stdWait();
 		}
 	}
 	
-	private boolean isYoutubeAtStart() {
-		return super.exists(logo) && super.exists(searchBar) && super.exists(searchButton);
+	protected boolean isYoutubeLoaded() {
+		return super.exists(logo) && super.exists(searchBar);
 	}
 
-	public void searchVideo(String search) {		
+	public YoutubeSearchResultPage searchVideo(String search) {		
 		super.click(searchBar);
-		super.paste(search).click(searchButton);
+		super.paste(search).type(Key.ENTER);
+		return new YoutubeSearchResultPage();
 	}
 }
