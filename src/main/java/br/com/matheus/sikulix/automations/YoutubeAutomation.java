@@ -9,6 +9,7 @@ import br.com.matheus.sikulix.automations.pages.AnonymousOperaPage;
 import br.com.matheus.sikulix.automations.pages.TaskBarPage;
 import br.com.matheus.sikulix.automations.pages.YoutubePage;
 import br.com.matheus.sikulix.automations.pages.YoutubeSearchResultPage;
+import br.com.matheus.sikulix.automations.pages.YoutubeVideoPage;
 
 public class YoutubeAutomation {
 
@@ -25,7 +26,9 @@ public class YoutubeAutomation {
 		
 		YoutubePage youtubePage = new YoutubePage();
 		YoutubeSearchResultPage searchResultPage = youtubePage.searchVideo("TesseracT - Juno");
-		searchResultPage.openVideo();
+		YoutubeVideoPage videoPage = searchResultPage.openVideo();
+		videoPage.goFullScreen();
+		videoPage.enhanceVideoQuality();
 	}
 	
 	private static void minimize() throws FindFailed {	
