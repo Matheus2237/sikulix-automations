@@ -1,7 +1,6 @@
 package br.com.matheus.sikulix.automations;
 
 import org.sikuli.script.FindFailed;
-import org.sikuli.script.ImagePath;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
@@ -21,20 +20,16 @@ public class GmailAutomation {
 		GmailAutomation.minimize();
 		
 		TaskBarPage taskBarPage = new TaskBarPage();
-		taskBarPage.showTaskBar();
-		taskBarPage.openAnonymousOpera();
-		
-		AnonymousOperaPage operaPage = new AnonymousOperaPage();
+		AnonymousOperaPage operaPage = taskBarPage.openAnonymousOpera();
 		operaPage.search("gmail.com");
 		
 		GmailLoginPage gmailLoginPage = new GmailLoginPage();
 		gmailLoginPage.login(USER_GMAIL, PASSWORD_GMAIL);
-		gmailLoginPage.waitForVerification();
+		GmailPage gmailPage = gmailLoginPage.waitForVerification();
 		
-		GmailPage gmailPage = new GmailPage();
 		String subject = "Automação Sikuli";
 		String body = "Email enviado utilizando a API do SikuliX :)";
-		gmailPage.enviarEmail(USER_GMAIL, subject, body).send();
+		gmailPage.composeEmail(USER_GMAIL, subject, body).send();
 		operaPage.closeTab();
 	}
 	

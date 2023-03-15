@@ -18,10 +18,7 @@ public class YoutubeAutomation {
 		YoutubeAutomation.minimize();
 		
 		TaskBarPage taskBarPage = new TaskBarPage();
-		taskBarPage.showTaskBar();
-		taskBarPage.openAnonymousOpera();
-		
-		AnonymousOperaPage operaPage = new AnonymousOperaPage();
+		AnonymousOperaPage operaPage = taskBarPage.openAnonymousOpera();
 		operaPage.search("youtube.com");
 		
 		YoutubePage youtubePage = new YoutubePage();
