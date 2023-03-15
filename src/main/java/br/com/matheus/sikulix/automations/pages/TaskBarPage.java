@@ -5,23 +5,19 @@ import org.sikuli.script.Pattern;
 
 public class TaskBarPage extends AbstractPage{
 
-	private Pattern taskbar = new Pattern("taskbar\\taskbar").similar(0.6);
 	private Pattern operaIcon = new Pattern("taskbar\\opera-icon");
 	private Pattern newAnonymousGuide = new Pattern("taskbar\\opera-new-anonymous-window.png");
 	
 	public TaskBarPage() {}
 	
-	public void showTaskBar() {
+	private void showTaskBar() {
 		super.type(Key.WIN);
 	}
 	
-	public void openAnonymousOpera() {
-		while (!isTaskBarVisible()) {
-			super.stdWait();
-		}
+	public AnonymousOperaPage openAnonymousOpera() {
+		this.showTaskBar();
 		super.rightClick(this.operaIcon);
 		super.click(this.newAnonymousGuide);
+		return new AnonymousOperaPage();
 	}
-
-	private boolean isTaskBarVisible() { return super.exists(this.taskbar); }
 }

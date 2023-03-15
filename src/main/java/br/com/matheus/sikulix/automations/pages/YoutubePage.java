@@ -14,7 +14,7 @@ public class YoutubePage extends AbstractPage {
 		}
 	}
 	
-	protected boolean isYoutubeLoaded() {
+	private boolean isYoutubeLoaded() {
 		return super.exists(logo) && super.exists(searchBar);
 	}
 

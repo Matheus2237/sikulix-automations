@@ -30,10 +30,11 @@ public class GmailLoginPage extends AbstractPage {
 		super.paste(information).click(nextButton);
 	}
 	
-	public void waitForVerification() {
+	public GmailPage waitForVerification() {
 		while(super.exists(twoStepsVerfication)) {
 			super.stdWait();
 		}
+		return new GmailPage();
 	}
 	
 	private boolean isLoginAtStart() {

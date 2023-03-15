@@ -17,7 +17,7 @@ public class GmailPage extends AbstractPage {
 		}
 	}
 	
-	public GmailPage enviarEmail(String to, String subject, String body) {
+	public GmailPage composeEmail(String to, String subject, String body) {
 		while(!isGmailComposeShown()) {
 			super.stdWait();
 		}
