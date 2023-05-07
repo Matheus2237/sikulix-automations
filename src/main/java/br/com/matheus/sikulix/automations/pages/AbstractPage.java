@@ -51,4 +51,16 @@ public abstract class AbstractPage {
 		final String IMAGES_ROOT_PATH = "sikulix-automations\\src\\main\\resources\\sikuli-imgs\\";
 		ImagePath.add(LOCAL_PROJECT_PATH.concat(IMAGES_ROOT_PATH));
 	}
+	
+	protected void waitFor(Pattern... patterns) {
+		while(!patternsIsShown(patterns))
+			this.stdWait();
+	}
+
+	private boolean patternsIsShown(Pattern... patterns) {
+		for (Pattern pattern : patterns)
+			if(!this.exists(pattern))
+				return false;
+		return true;
+	}
 }

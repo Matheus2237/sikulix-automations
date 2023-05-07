@@ -12,24 +12,16 @@ public class GmailPage extends AbstractPage {
 	private Pattern gmailActions = new Pattern("gmail\\gmail-actions.png");
 	
 	public GmailPage() {
-		while(!isAtGmailInitialPage()) {
-			super.stdWait();
-		}
+		super.waitFor(gmailLogo, gmailActions);
 	}
 	
 	public GmailPage composeEmail(String to, String subject, String body) {
-		while(!isGmailComposeShown()) {
-			super.stdWait();
-		}
+		super.waitFor(gmailCompose);
 		super.click(gmailCompose);
 		this.writeEmail(to, subject, body);
 		return this; 
 	}
 	
-	private boolean isAtGmailInitialPage() {
-		return super.exists(gmailLogo) && super.exists(gmailActions);
-	}
-
 	private void writeEmail(String to, String subject, String body) {
 		super.stdWait();
 		super.click(gmailTextArea);
@@ -40,9 +32,5 @@ public class GmailPage extends AbstractPage {
 	
 	public void send() {
 		super.click(gmailSend);
-	}
-	
-	private boolean isGmailComposeShown() {
-		return super.exists(gmailCompose);
 	}
 }

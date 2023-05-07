@@ -12,9 +12,7 @@ public class AnonymousOperaPage extends AbstractPage {
 	private Pattern closeX = new Pattern("opera\\closeX.png");
 	
 	public AnonymousOperaPage() {
-		while(!isOperaOnStart()) {
-			super.stdWait();
-		}
+		this.waitForOperaPage();
 	}
 
 	public void search(String searchInput) {
@@ -22,12 +20,15 @@ public class AnonymousOperaPage extends AbstractPage {
 		super.paste(searchInput).type(Key.ENTER);
 	}
 	
-	private boolean isOperaOnStart() {
-		return super.exists(anonymousIcon) || super.exists(inPrivateMode) || super.exists(searchInWeb);
-	}
-	
 	public void closeTab() {
 		super.biggerWait();
 		super.click(closeX);
+	}
+	
+	private void waitForOperaPage() {
+		while(!super.exists(anonymousIcon) &&
+				!super.exists(inPrivateMode) &&
+				!super.exists(searchInWeb))
+			this.stdWait();
 	}
 }

@@ -7,13 +7,7 @@ public class YoutubeSearchResultPage extends AbstractPage {
 	private Pattern searchVideoTitle = new Pattern("youtube\\search-video-title.png");
 
 	public YoutubeSearchResultPage() {
-		while(!isSearchResultsLoaded()) {
-			this.stdWait();
-		}
-	}
-	
-	private boolean isSearchResultsLoaded() {
-		return super.exists(searchVideoTitle);
+		super.waitFor(searchVideoTitle);
 	}
 
 	public YoutubeVideoPage openVideo() {

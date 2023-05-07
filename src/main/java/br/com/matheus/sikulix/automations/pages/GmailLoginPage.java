@@ -12,38 +12,22 @@ public class GmailLoginPage extends AbstractPage {
 	private Pattern twoStepsVerfication = new Pattern("gmail\\login-two-steps-verification.png");
 	
 	public GmailLoginPage() {
-		while(!isLoginAtStart()) {
-			super.stdWait();
-		}
+		super.waitFor(startPoint, emailOrTelephone, nextButton);
 	}
 	
 	public void login(String user, String password) {
 		this.fillField(emailOrTelephone, user);
-		while(!isLoginAtPassword()) {
-			super.stdWait();
-		}
+		super.waitFor(typeYourPassword, showPassword, nextButton);
 		this.fillField(typeYourPassword, password);
+	}
+	
+	public GmailPage waitForVerification() {
+		super.waitFor(twoStepsVerfication);
+		return new GmailPage();
 	}
 	
 	private void fillField(Pattern field, String information) {
 		super.click(field);
 		super.paste(information).click(nextButton);
 	}
-	
-	public GmailPage waitForVerification() {
-		while(super.exists(twoStepsVerfication)) {
-			super.stdWait();
-		}
-		return new GmailPage();
-	}
-	
-	private boolean isLoginAtStart() {
-		return super.exists(startPoint) && super.exists(emailOrTelephone) && hasNextButton();
-	}
-	
-	private boolean isLoginAtPassword() {
-		return super.exists(typeYourPassword) && super.exists(showPassword) && hasNextButton();
-	}
-	
-	private boolean hasNextButton() { return super.exists(nextButton); }
 }

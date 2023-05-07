@@ -9,15 +9,9 @@ public class YoutubePage extends AbstractPage {
 	private Pattern searchBar = new Pattern("youtube\\youtube-search-bar.png");
 
 	public YoutubePage() {
-		while(!isYoutubeLoaded()) {
-			super.stdWait();
-		}
+		super.waitFor(logo, searchBar);
 	}
 	
-	private boolean isYoutubeLoaded() {
-		return super.exists(logo) && super.exists(searchBar);
-	}
-
 	public YoutubeSearchResultPage searchVideo(String search) {		
 		super.click(searchBar);
 		super.paste(search).type(Key.ENTER);

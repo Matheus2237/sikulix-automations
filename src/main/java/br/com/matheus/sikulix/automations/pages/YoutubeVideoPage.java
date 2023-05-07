@@ -10,13 +10,7 @@ public class YoutubeVideoPage extends AbstractPage {
 	private Pattern video1080p = new Pattern("youtube\\video-1080p.png");
 		
 	public YoutubeVideoPage() {
-		while(!isVideoLoaded()) {
-			super.stdWait();
-		}
-	}
-
-	private boolean isVideoLoaded() {
-		return super.exists(videoTitle);
+		super.waitFor(videoTitle);
 	}
 
 	public void goFullScreen() {
@@ -25,9 +19,7 @@ public class YoutubeVideoPage extends AbstractPage {
 
 	public void enhanceVideoQuality() {
 		super.click(videoSettings);
-		while(!super.exists(videoQuality)) {
-			super.stdWait();
-		}
+		super.waitFor(videoQuality);
 		super.click(videoQuality);
 		super.click(video1080p);
 	}
